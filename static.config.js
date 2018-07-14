@@ -39,6 +39,10 @@ export default {
       component: 'src/landing',
     },
     {
+      path: '/generate',
+      component: 'src/generate',
+    },
+    {
       is404: true,
       component: 'src/not-found',
     },

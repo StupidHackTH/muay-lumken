@@ -24,7 +24,7 @@ const NumberBox = styled.div`
   align-items: center;
   justify-content: center;
 
-  font-size: 13em;
+  font-size: 10em;
   font-weight: bold;
   text-align: center;
   font-family: bangli;

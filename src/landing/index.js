@@ -1,11 +1,25 @@
-import React, {Component} from 'react'
+import React from 'react'
 import styled, {keyframes} from 'react-emotion'
 import {hot} from 'react-hot-loader'
+import {Link} from 'react-static'
+import Ink from 'react-ink'
 
-import Generator from './Generator'
+import Particle from 'react-particles-js'
 
 import BaseButton from '../ui/Button'
 import Paper from '../ui/Paper'
+
+import particle from './particle'
+
+const Particles = styled(Particle)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+
+  width: 100%;
+  height: 100%;
+`
 
 const Background = styled.div`
   background: linear-gradient(45deg, #ed1c24, #fcee21);
@@ -63,32 +77,48 @@ const Notice = styled.div`
 `
 
 const Card = styled(Paper)`
+  cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 0px 25px;
 
   animation-duration: 1.8s;
   animation-name: ${tummyMove};
   animation-iteration-count: 1;
   animation-easing-function: ease-in-out;
+
+  &:hover {
+    transform: scale(1.05) rotate(4deg);
+    box-shadow: rgba(0, 0, 0, 0.65) 4px 4x 30px;
+  }
+`
+
+const Red = styled.span`
+  color: red;
 `
 
 const Landing = () => (
   <Background>
+    <Particles params={particle} />
+
     <Container>
-      <Card>
-        <Logo src="/muay-lumken-aichan.png" />
+      <Link to="/generate" style={{textDecoration: 'none'}}>
+        <Card>
+          <Ink />
 
-        <Notice>
-          อย่าลืม
-          <span style={{color: 'red'}}>พนมมือ</span>
-          และ
-          <span style={{color: 'red'}}>เปิดเสียง</span>
-          &nbsp;เพื่อความ
-          <span style={{color: 'red'}}>ศักดิ์สิทธิ์</span>
-          สูงสุด
-        </Notice>
+          <Logo src="/muay-lumken-aichan.png" />
 
-        <Button>มารวยกันเถอะ!</Button>
-      </Card>
+          <Notice>
+            อย่าลืม
+            <Red>พนมมือ</Red>
+            และ
+            <Red>เปิดเสียง</Red>
+            &nbsp;เพื่อความ
+            <Red>ศักดิ์สิทธิ์</Red>
+            สูงสุด
+          </Notice>
+
+          <Button>มารวยกันเถอะ!</Button>
+        </Card>
+      </Link>
     </Container>
   </Background>
 )

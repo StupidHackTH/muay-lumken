@@ -43,7 +43,11 @@ class RuleEngine {
       if (!isNegative && value.negative) {
         isNegative = true
 
-        negativeReason.push(value.matchWith)
+        negativeReason.push({
+          trait: value.trait,
+          number: value.matchWith,
+          desc: value.desc,
+        })
       }
 
       if (trait) {

@@ -1,0 +1,59 @@
+.noty_theme__axi.noty_bar {
+  position: relative;
+  background: white;
+
+  line-height: 1.5;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  overflow: hidden;
+
+  transition: all 0.5s ease-in-out;
+}
+
+.noty_theme__axi.noty_bar .noty_body {
+  padding: 14px 22px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.noty_theme__axi.noty_bar .noty_buttons {
+  padding: 10px;
+}
+
+.noty_theme__axi.noty_type__alert,
+.noty_theme__axi.noty_type__notification {
+  color: #555555;
+  background: white;
+  box-shadow: 0 12px 20px -10px rgba(255, 255, 255, 0.28),
+    0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 255, 255, 0.2);
+}
+
+/* ffae32 */
+.noty_theme__axi.noty_type__warning {
+  color: #ffffff;
+  box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28),
+    0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
+  background-color: #ffa21a;
+}
+
+.noty_theme__axi.noty_type__error {
+  color: #ffffff;
+  box-shadow: 0 12px 20px -10px rgba(244, 67, 54, 0.28),
+    0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(244, 67, 54, 0.2);
+  background-color: #f55a4e;
+}
+
+.noty_theme__axi.noty_type__info,
+.noty_theme__axi.noty_type__information {
+  color: #ffffff;
+  box-shadow: 0 12px 20px -10px rgba(0, 188, 212, 0.28),
+    0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 188, 212, 0.2);
+  background-color: #00d3ee;
+}
+
+.noty_theme__axi.noty_type__success {
+  color: #ffffff;
+  box-shadow: 0 12px 20px -10px rgba(76, 175, 80, 0.28),
+    0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(76, 175, 80, 0.2);
+  background-color: #5cb860;
+}

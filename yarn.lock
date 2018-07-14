@@ -2920,6 +2920,10 @@ download@^5.0.3:
     mkdirp "^0.5.1"
     pify "^2.3.0"
 
+drange@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/drange/-/drange-1.0.2.tgz#a7390ad5869c6f69eabdc42e0a5b516bd100966e"
+
 duplexer2@^0.1.2:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.1.4.tgz#8b12dab878c0d69e3e7891051662a32fc6bddcc1"
@@ -6964,6 +6968,13 @@ ramda@^0.25.0:
   version "0.25.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.25.0.tgz#8fdf68231cffa90bc2f9460390a0cb74a29b29a9"
 
+randexp@^0.4.9:
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/randexp/-/randexp-0.4.9.tgz#327326358e190c685c2069e1f9b45c5190c517b2"
+  dependencies:
+    drange "^1.0.0"
+    ret "^0.2.0"
+
 randomatic@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/randomatic/-/randomatic-3.0.0.tgz#d35490030eb4f7578de292ce6dfb04a91a128923"
@@ -7601,6 +7612,10 @@ restore-cursor@^2.0.0:
   dependencies:
     onetime "^2.0.0"
     signal-exit "^3.0.2"
+
+ret@^0.2.0:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/ret/-/ret-0.2.2.tgz#b6861782a1f4762dce43402a71eb7a283f44573c"
 
 ret@~0.1.10:
   version "0.1.15"

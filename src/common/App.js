@@ -10,6 +10,11 @@ import stores from './stores'
 import client from '../utils/apollo'
 
 injectGlobal`
+  @font-face {
+    font-family: 'bangli';
+    src: url("/bangli-kosana.ttf");
+  }
+
   body {
     margin: 0;
     color: #555;

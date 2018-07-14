@@ -30,7 +30,7 @@ export default class Generator extends Component {
 
       this.setState({number: phone.gen()})
       times++
-    }, 100)
+    }, 80)
   }
 
   render() {

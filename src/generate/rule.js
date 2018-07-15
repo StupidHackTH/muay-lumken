@@ -6,7 +6,7 @@ import ruleset from './ruleset'
 const randomize = list => list[Math.floor(Math.random() * list.length)]
 
 function calculatePadding(constraints) {
-  const total = 8
+  const total = 7
   const data = constraints.length * 2
   const usable = total - data
   const start = Math.round(Math.random() * usable)
@@ -38,7 +38,7 @@ class RuleEngine {
     console.log('Rules:', rules, 'Constraints:', constraints)
     console.log('Pattern:', pattern)
 
-    const regex = new RegExp(`0[689](${pattern})`)
+    const regex = new RegExp(`0[689]\\d(${pattern})`)
     const generator = new RandExp(regex)
 
     return generator.gen()

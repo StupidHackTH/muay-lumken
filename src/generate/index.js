@@ -8,8 +8,11 @@ import {observer} from 'mobx-react'
 import {observable} from 'mobx'
 
 import Alchemy from './Alchemy'
+import Checker from './Checker'
 import RainbowText from './RainbowText'
 import RuleEngine from './rule'
+
+import store from './store'
 
 import particle from '../landing/particle'
 
@@ -37,6 +40,8 @@ const dhummyWarp = keyframes`
 `
 
 const Card = styled(Paper)`
+  margin-top: 5.8em;
+  margin-bottom: 5.8em;
   padding: 0em 1em 1em 1em;
 
   width: 100%;
@@ -105,12 +110,11 @@ const Logo = styled.img`
   width: 13em;
 `
 
-const ITER_COUNT = 10
+const ITER_COUNT = 20
 
 const tabLabels = {
-  sell: 'ขายเบอร์มงคล',
-  check: 'ตรวจเบอร์',
-  random: 'สุ่มเบอร์',
+  sell: 'ปลุกเสกเบอร์มงคล',
+  check: 'วิเคราะห์เบอร์มงคล',
 }
 
 const tabs = Object.keys(tabLabels)
@@ -123,10 +127,40 @@ const TabContainer = styled.div`
   background: white;
 `
 
+const Heading = styled.h1`
+  margin: 0;
+  margin-bottom: 0.5em;
+
+  font-family: bangli;
+  font-size: 4.5em;
+
+  background: linear-gradient(45deg, #ed1c24, #fcee21);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`
+
+const Center = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const Input = styled.input`
+  font-size: 4.5em;
+  font-family: bangli;
+  background: transparent;
+  color: #ed1c24;
+  border: none;
+  border-bottom: 2px solid #2d2d30;
+  width: 5em;
+  outline: none;
+`
+
 @observer
 class Generator extends Component {
   @observable tab = 'sell'
-  @observable number = '0000000000'
+  @observable wants = ''
 
   componentDidMount() {
     this.regen()
@@ -135,39 +169,34 @@ class Generator extends Component {
   regen = () => {
     let times = 0
 
-    const prefix = new RandExp(/0[689]/).gen()
-
     this.spinning = true
 
     const timer = setInterval(() => {
-      const number = this.number
-
       if (times > ITER_COUNT) {
         this.spinning = false
 
         return clearInterval(timer)
       }
 
-      const fix = number.slice(2, times)
-      const remain = ITER_COUNT - times
-      const pattern = '\\d{' + remain + '}'
-
-      const phone = new RandExp(new RegExp(pattern))
-      const num = (prefix + fix + phone.gen()).slice(0, 10)
-
-      console.table({num, number, pattern, prefix, fix, remain})
-      this.number = num
+      const phone = RuleEngine.generate(...this.wants.split(' ')).slice(0, 10)
+      store.number = phone
 
       times++
-    }, 80)
+    }, 100)
   }
 
   setTab = tab => {
     this.tab = tab
   }
 
+  setWants = e => {
+    const wants = e.target.value
+    this.wants = wants
+    store.number = RuleEngine.generate(...wants.split(' '))
+  }
+
   render() {
-    console.log(this.tab, this.number)
+    console.log(this.tab, store.number)
 
     return (
       <Background>
@@ -191,13 +220,19 @@ class Generator extends Component {
               />
             </TabContainer>
 
-            {this.tab === 'random' && (
-              <div>
+            {this.tab === 'sell' && (
+              <Center>
+                <Heading>ปลุกเสกเบอร์มงคล</Heading>
+
+                <Input onChange={this.setWants} value={this.wants} />
+
                 <Alchemy spinning={this.spinning} />
 
-                <RainbowText value={this.number} onClick={this.regen} />
-              </div>
+                <RainbowText value={store.number} onClick={this.regen} />
+              </Center>
             )}
+
+            {this.tab === 'check' && <Checker />}
 
             <audio src="/shitangmae.mp3" autoPlay />
           </Card>

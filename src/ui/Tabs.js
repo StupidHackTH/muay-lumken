@@ -31,7 +31,9 @@ const Tab = styled.div`
   ${props =>
     props.active &&
     css`
-      color: ${props.color};
+      background: linear-gradient(45deg, #ed1c24, #fcee21);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     `};
 `
 

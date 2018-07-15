@@ -138,6 +138,8 @@ export default class Checker extends Component {
             </span>
           </Card>
         )}
+
+        <audio src="/guanim.mp3" autoPlay />
       </Container>
     )
   }

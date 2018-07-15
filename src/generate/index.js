@@ -192,7 +192,13 @@ class Generator extends Component {
   setWants = e => {
     const wants = e.target.value
     this.wants = wants
+    this.spinning = true
+
     store.number = RuleEngine.generate(...wants.split(' '))
+
+    setTimeout(() => {
+      this.spinning = false
+    }, 1500)
   }
 
   render() {
@@ -229,12 +235,12 @@ class Generator extends Component {
                 <Alchemy spinning={this.spinning} />
 
                 <RainbowText value={store.number} onClick={this.regen} />
+
+                <audio src="/shitangmae.mp3" autoPlay />
               </Center>
             )}
 
             {this.tab === 'check' && <Checker />}
-
-            <audio src="/shitangmae.mp3" autoPlay />
           </Card>
         </Container>
       </Background>

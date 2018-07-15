@@ -172,8 +172,26 @@ class Alchemy extends Component {
   componentDidUpdate(props) {
     const {spinning} = this.props
 
-    if (spinning && props.spinning !== spinning) {
-      this.setState({deg: Math.round(Math.random() * 360)})
+    let timer = 0
+    let times = 5
+
+    if (props.spinning !== spinning) {
+      if (spinning) {
+        times = 5
+
+        timer = setInterval(() => {
+          if (times > 5) {
+            return clearInterval(timer)
+          }
+
+          this.setState({deg: Math.round(Math.random() * 360)})
+
+          times++
+        }, 800)
+      } else {
+        clearInterval(timer)
+        this.setState({deg: 0})
+      }
     }
   }
 
